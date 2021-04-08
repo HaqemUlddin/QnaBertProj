@@ -15,6 +15,7 @@ import re
 import logging
 from transformers import BertTokenizer, BertForQuestionAnswering
 import torch
+from flask import Flask, request, Response
  
 
 import json 
@@ -22,7 +23,8 @@ import requests
 import time
 import urllib
 import joblib
- 
+
+app = FLask(__name__)
 log = logging.getLogger(__name__)
 
 loop = asyncio.get_event_loop()
@@ -154,6 +156,7 @@ async def main(message: types.Message):
 
 if __name__ == '__main__':
     #executor.start_polling(dp, skip_updates=True)
+    app.run()
     loop.create_task(executor.start_polling(dp, skip_updates=True))
     loop.run_until_complete(main())
     loop.stop()
