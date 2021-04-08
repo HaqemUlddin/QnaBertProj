@@ -152,9 +152,6 @@ async def main(message: types.Message):
     await bot.session.close()
     log.warning('Program is ended')
 
-import nest_asyncio
-nest_asyncio.apply()
-
 if __name__ == '__main__':
     #executor.start_polling(dp, skip_updates=True)
     loop.create_task(executor.start_polling(dp, skip_updates=True))
